@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>osintdog.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="Osint_Dog_FAVICON.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pixelify Sans', cursive;
+}
+
+html, body {
+    cursor: url("cur.cur"), default;
+}
+
+body {
+    background-color: #000000;
+    color: #A9A9A9;
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #262626;
+    background-color: #000000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    color: #A9A9A9;
+    font-size: 16px;
+    margin-right: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(169, 169, 169, 0.3);
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 5px #00ff00);
+}
+
+.status-dot img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) saturate(100%) invert(95%) sepia(84%) saturate(1925%) hue-rotate(60deg) brightness(104%) contrast(104%);
+}
+
+.status-text {
+    color: #A9A9A9;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Navigation styles */
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    background: none;
+    border: 1px solid transparent;
+    color: #A9A9A9;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
+
+.nav-button:hover {
+    color: #ffffff;
+    background-color: #111;
+    border-color: #333;
+    box-shadow: 0 0 8px rgba(51, 51, 51, 0.5);
+}
+
+/* Main content area */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 150px);
+    padding: 30px 20px;
+}
+
+.osintdog-logo {
+    border: 1px solid #262626;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    background-color: #040404;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.osintdog-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.logo-image {
+    width: 70%;
+    height: 70%;
+    opacity: 0.9;
+}
+
+/* Search area styles */
+.search-container {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.search-dropdown {
+    width: 180px;
+}
+
+.query-select {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    height: 38px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.query-select:hover, .query-select:focus {
+    border-color: #555;
+    box-shadow: 0 0 8px rgba(85, 85, 85, 0.3);
+}
+
+.search-input {
+    flex: 1;
+}
+
+.search-input input {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 13px;
+    outline: none;
+    height: 38px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input input:hover, .search-input input:focus {
+    border-color: #555;
+    box-shadow: 0 0 8px rgba(85, 85, 85, 0.3);
+}
+
+.search-button {
+    width: 150px;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 38px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.search-btn:hover {
+    background-color: #333;
+    border-color: #555;
+    box-shadow: 0 0 10px rgba(85, 85, 85, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Footer styles */
+footer {
+    border-top: 1px solid #262626;
+    padding: 20px;
+    text-align: center;
+    background-color: #000000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.footer-text {
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: #888;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #ffffff;
+    background-color: #111;
+    box-shadow: 0 0 8px rgba(17, 17, 17, 0.5);
+}
+
+.separator {
+    color: #444;
+}
+
+.footer-quote {
+    color: #555;
+    font-size: 12px;
+    margin-top: 12px;
+    font-style: italic;
+}
+
+/* Modal popup styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 700px;
+    background-color: #111;
+    border: 1px solid #444;
+    z-index: 1000;
+    padding: 25px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Enhanced styling for blocklist items */
+.blocklist-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.blocklist-item {
+    flex: 1;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #111;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.blocklist-item:hover {
+    border-color: #555;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Better heading styling */
+.blocklist-label {
+    font-size: 18px;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.blocklist-features {
+    list-style-type: none;
+}
+
+/* Enhance list items */
+.blocklist-features li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 5px;
+    font-size: 13px;
+}
+
+.blocklist-features li::before {
+    content: "•";
+    margin-right: 8px;
+    color: #666;
+}
+
+/* Purchase modal styles */
+.plans-container {
+    display: flex;
+    gap: 20px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.plan-card {
+    flex: 1;
+    min-width: 220px;
+    background-color: #111;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    border-color: #666;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.plan-card.featured {
+    border-color: #555;
+    background-color: #141414;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.plan-badge {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background-color: #A9A9A9;
+    color: #000;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.plan-header {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.plan-title {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 12px;
+    font-family: 'Pixelify Sans', cursive;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.plan-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+/* Apply Minecraftia font to numbers only */
+.amount, .currency {
+    font-family: 'Minecraftia', sans-serif;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.currency {
+    font-size: 20px;
+    color: #A9A9A9;
+    margin-right: 2px;
+}
+
+.amount {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.period {
+    font-size: 13px;
+    color: #888;
+    margin-left: 5px;
+    align-self: flex-end;
+    padding-bottom: 6px;
+}
+
+.plan-features {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.plan-features ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+.plan-features li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 18px;
+    color: #A9A9A9;
+    font-size: 13px;
+}
+
+.plan-features li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #666;
+}
+
+.plan-button {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 0;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Pixelify Sans', cursive;
+    width: 100%;
+    letter-spacing: 0.5px;
+}
+
+.plan-button:hover {
+    background-color: #333;
+    border-color: #666;
+    box-shadow: 0 0 10px rgba(102, 102, 102, 0.3);
+    transform: translateY(-2px);
+}
+
+.plan-disclaimer {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* Payment method selection styles */
+.payment-methods {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.payment-method {
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.payment-method:hover {
+    background-color: #333;
+    border-color: #666;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.payment-method.selected {
+    border-color: #A9A9A9;
+    background-color: #333;
+    box-shadow: 0 0 15px rgba(169, 169, 169, 0.3);
+}
+
+.payment-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #A9A9A9;
+}
+
+.payment-title {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.payment-subtitle {
+    color: #888;
+    font-size: 11px;
+}
+
+/* Payment instructions styles */
+.payment-instructions {
+    display: none;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.instructions-title {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.instruction-item {
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: #111;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.instruction-label {
+    color: #A9A9A9;
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.instruction-value {
+    color: #fff;
+    font-size: 14px;
+    font-family: monospace;
+    background-color: #000;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #333;
+    word-break: break-all;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.instruction-value:hover {
+    background-color: #222;
+    border-color: #555;
+}
+
+.copy-notice {
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.crypto-wallets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.crypto-wallet {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.wallet-name {
+    color: #A9A9A9;
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.wallet-address {
+    color: #fff;
+    font-size: 12px;
+    font-family: monospace;
+    background-color: #000;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #333;
+    word-break: break-all;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wallet-address:hover {
+    background-color: #222;
+    border-color: #555;
+}
+
+.payment-complete-btn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    display: block;
+    width: 200px;
+    margin: 20px auto 0;
+}
+
+.payment-complete-btn:hover {
+    background-color: #444;
+    border-color: #666;
+    box-shadow: 0 0 15px rgba(102, 102, 102, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Payment submission form styles */
+.payment-form-container {
+    display: none;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.payment-form-title {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.section-title {
+    color: #A9A9A9;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.gift-card-section {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .plans-container {
+        flex-direction: column;
+    }
+    
+    .plan-card {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .osintdog-logo {
+        width: 90%;
+        height: auto;
+        aspect-ratio: 1.56/1;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-dropdown, .search-input, .search-button {
+        width: 100%;
+    }
+
+    .payment-methods {
+        flex-direction: column;
+    }
+
+    .payment-method {
+        width: 100%;
+    }
+
+    .crypto-wallets {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Improve button styling */
+.blocklist-button, .modal-button {
+    background-color: #222;
+    color: #A9A9A9;
+    border: 1px solid #444;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+.blocklist-button:hover, .modal-button:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #666;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.modal-title {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.modal-content {
+    color: #A9A9A9;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.modal-paragraph {
+    margin-bottom: 15px;
+}
+
+.modal-section-title {
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 0 12px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.provider-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.provider-button {
+    background-color: #222;
+    border: 1px solid #444;
+    color: #A9A9A9;
+    padding: 8px 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+}
+
+.provider-button:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+    box-shadow: 0 0 8px rgba(85, 85, 85, 0.3);
+    transform: translateY(-2px);
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 22px;
+    color: #aaa;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.modal-contact {
+    color: #A9A9A9;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.modal-date {
+    color: #777;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    backdrop-filter: blur(3px);
+}
+
+/* Contact modal styles */
+.contact-container {
+    display: flex;
+    gap: 25px;
+}
+
+.contact-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.contact-title {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.contact-item {
+    margin-bottom: 12px;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #111;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item:hover {
+    border-color: #666;
+    background-color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-label {
+    color: #ffffff;
+    font-size: 15px;
+    margin: 0 0 8px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.contact-text {
+    color: #A9A9A9;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.contact-link {
+    display: block;
+    color: #A9A9A9;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    color: #A9A9A9;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 13px;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #555;
+    box-shadow: 0 0 8px rgba(85, 85, 85, 0.3);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.send-message-btn {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
+
+.send-message-btn:hover {
+    background-color: #444;
+    border-color: #555;
+    box-shadow: 0 0 10px rgba(85, 85, 85, 0.3);
+    transform: translateY(-2px);
+}
+
+#form-status {
+    margin-top: 12px;
+    padding: 8px;
+    border-radius: 3px;
+    display: none;
+    font-size: 13px;
+}
+
+#form-status.success {
+    display: block;
+    background-color: rgba(0, 128, 0, 0.2);
+    border: 1px solid rgba(0, 128, 0, 0.5);
+    color: #00FF00;
+}
+
+#form-status.error {
+    display: block;
+    background-color: rgba(128, 0, 0, 0.2);
+    border: 1px solid rgba(128, 0, 0, 0.5);
+    color: #FF0000;
+}
+
+/* GDPR notice styling */
+.gdpr-notice {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 12px;
+    margin-top: 15px;
+    color: #A9A9A9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+}
+
+.gdpr-notice h3 {
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+}
+
+/* Search results styling */
+.result-data {
+    font-family: monospace;
+    background-color: #111;
+    padding: 15px;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    border: 1px solid #333;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+}
+
+.breach-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    border: 1px solid #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.breach-source {
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+}
+
+.breach-details {
+    color: #A9A9A9;
+    font-size: 12px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.api-error {
+    color: #ff6b6b;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    font-size: 13px;
+}
+
+.api-success {
+    color: #6bff6b;
+    background-color: rgba(0, 255, 0, 0.1);
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    font-size: 13px;
+}
+
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    display: none;
+    backdrop-filter: blur(3px);
+}
+
+.loading-text {
+    color: #A9A9A9;
+    margin-top: 15px;
+    font-size: 15px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+/* Notification for search functionality */
+.notification {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 12px;
+    margin-top: 15px;
+    text-align: center;
+    max-width: 800px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.notification p {
+    margin: 5px 0;
+    color: #A9A9A9;
+    font-size: 13px;
+}
+    </style>
+    <script src="security.js"></script>
+</head>
+<body>
+    <!-- Add this right after the opening <body> tag -->
+    <noscript>
+        <div style="background-color: #FF0000; color: #FFFFFF; padding: 20px; text-align: center;">
+            This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.
+        </div>
+    </noscript>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-text">OSINTDOG.COM</div>
+            <div class="status">
+                <div class="status-dot"><img src="paw.png" alt="Status"></div>
+                <span class="status-text">all systems operational</span>
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button" id="info-button">INFORMATION</button>
+            <button class="nav-button" id="purchase-button">PURCHASE</button>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="osintdog-logo">
+            <img class="logo-image" src="Osint_Dog_MAXRES.png" alt="osintdog Logo">
+        </div>
+        <div class="search-container">
+            <div class="search-dropdown">
+                <select class="query-select">
+                    <option value="">Select a query</option>
+                    <option value="email">Email</option>
+                    <option value="username">Username</option>
+                    <option value="phone">Phone Number</option>
+                    <option value="domain">Domain</option>
+                </select>
+            </div>
+            <div class="search-input">
+                <input type="text" placeholder="Input search query...">
+            </div>
+            <div class="search-button">
+                <button class="search-btn" id="search-button">SEARCH</button>
+            </div>
+        </div>
+        <div class="notification">
+            <p>Please read our Legal and Privacy pages before using.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <br>
+        <div class="footer-links">
+            <a href="privacy.html" class="footer-link">Privacy</a>
+            <span class="separator">•</span>
+            <a href="legal.html" class="footer-link">Legal</a>
+            <span class="separator">•</span>
+            <a class="footer-link" id="updates-link">Updates</a>
+            <span class="separator">•</span>
+            <a class="footer-link" id="contact-link">Contact</a>
+            <span class="separator">•</span>
+            <a class="footer-link" href="docs.html">Documentation</a>
+            <span class="separator">•</span>
+            <a class="footer-link" id="removal-link">Data Removal</a>
+        </div>
+    </footer>
+
+    <!-- Modal popups -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Information Modal -->
+    <div class="modal" id="info-modal">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">What is osintdog?</h2>
+        <div class="modal-content">
+            <p class="modal-paragraph">
+                osintdog.com is a data breach search engine that consolidates information from multiple trusted third-party APIs into a single platform.
+            </p>
+            <p class="modal-paragraph">
+                We offer access to publicly available breached data — such as email addresses, passwords, usernames, phone numbers, and other related information — obtained through verified external sources.
+            </p>
+            <p class="modal-paragraph">
+                Our API is available for integration with third-party applications and services.
+            </p>
+            <p class="modal-paragraph">
+                <strong>Important:</strong> Before using our API or purchasing an API key, please ensure that your intended use complies with the data protection laws and regulations in your country, including the General Data Protection Regulation (GDPR) if applicable.
+            </p>
+            
+
+            <h3 class="modal-section-title">Available APIs in our service:</h3>
+            <div class="provider-buttons">
+                <button class="provider-button">SNUSBASE</button>
+                <button class="provider-button">LEAKCHECK</button>
+                <button class="provider-button">HACKCHECK</button>
+                <button class="provider-button">BREACHBASE</button>
+                <button class="provider-button">INTELVAULT</button>
+                <button class="provider-button">OATHNET.RU</button>
+                <button class="provider-button">SEON</button>
+                <button class="provider-button">AND MORE COMING SOON!</button>
+            </div>
+
+            <p class="modal-contact">
+                For questions contact us in our contact popup.</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Purchase Modal -->
+    <div class="modal" id="purchase-modal">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Choose Your API Access Plan</h2>
+        
+        <div class="plans-container">
+            <!-- Monthly Plan -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h3 class="plan-title">API Monthly</h3>
+                    <div class="plan-price">
+                        <span class="currency">€</span>
+                        <span class="amount">7</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li>Full API access</li>
+                        <li>Unlimited queries</li>
+                        <li>All data sources included</li>
+                        <li>24/7 technical support</li>
+                    </ul>
+                </div>
+                <button class="plan-button" onclick="showPaymentOptions('monthly')">PURCHASE MONTHLY</button>
+            </div>
+            
+            <!-- Lifetime Plan -->
+            <div class="plan-card featured">
+                <div class="plan-badge">BEST VALUE</div>
+                <div class="plan-header">
+                    <h3 class="plan-title">API Lifetime</h3>
+                    <div class="plan-price">
+                        <span class="currency">€</span>
+                        <span class="amount">50</span>
+                        <span class="period">one-time</span>
+                    </div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li>Permanent API access</li>
+                        <li>Unlimited queries</li>
+                        <li>All data sources included</li>
+                        <li>Priority support</li>
+                        <li>All future updates</li>
+                    </ul>
+                </div>
+                <button class="plan-button" onclick="showPaymentOptions('lifetime')">PURCHASE LIFETIME</button>
+            </div>
+        </div>
+
+        <!-- Payment Methods Selection -->
+        <div id="payment-selection" style="display: none;">
+            <h3 class="modal-section-title">Select Payment Method</h3>
+            <div class="payment-methods">
+                <div class="payment-method" onclick="selectPaymentMethod('paypal')">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <div class="payment-title">PayPal</div>
+                    <div class="payment-subtitle">Instant processing</div>
+                </div>
+                <div class="payment-method" onclick="selectPaymentMethod('crypto')">
+                    <div class="payment-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <div class="payment-title">Cryptocurrency</div>
+                    <div class="payment-subtitle">BTC, ETH, LTC, etc.</div>
+                </div>
+                <div class="payment-method" onclick="selectPaymentMethod('giftcard')">
+                    <div class="payment-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="payment-title">Gift Cards</div>
+                    <div class="payment-subtitle">Various accepted</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PayPal Instructions -->
+        <div id="paypal-instructions" class="payment-instructions">
+            <h3 class="instructions-title">PayPal Payment Instructions</h3>
+            <div class="instruction-item">
+                <div class="instruction-label">1. Send payment to our PayPal email:</div>
+                <div class="instruction-value" onclick="copyToClipboard(this)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aedecfd7eec1ddc7c0dacac1c980cdc1c3">[email&#160;protected]</a></div>
+                <div class="copy-notice">Click to copy</div>
+            </div>
+            <div class="instruction-item">
+                <div class="instruction-label">2. Amount to send:</div>
+                <div class="instruction-value" id="paypal-amount">€7.00 EUR</div>
+            </div>
+            <div class="instruction-item">
+                <div class="instruction-label">3. Include this note in your payment:</div>
+                <div class="instruction-value" onclick="copyToClipboard(this)" id="paypal-note">API Access - Monthly Plan</div>
+                <div class="copy-notice">Click to copy</div>
+            </div>
+            <div class="instruction-item">
+                <div class="instruction-label">4. Important:</div>
+                <div style="color: #A9A9A9; font-size: 13px; padding: 8px;">
+                    • Send as "Friends & Family" to avoid fees<br>
+                    • Keep your PayPal transaction ID for the next step<br>
+                    • Processing usually takes 1-2 hours after payment confirmation
+                </div>
+            </div>
+            <button class="payment-complete-btn" onclick="showPaymentForm('paypal')">I'VE PAID</button>
+        </div>
+
+        <!-- Crypto Instructions -->
+        <div id="crypto-instructions" class="payment-instructions">
+            <h3 class="instructions-title">Cryptocurrency Payment Instructions</h3>
+            <div class="instruction-item">
+                <div class="instruction-label">1. Choose your preferred cryptocurrency and send the equivalent Euro amount:</div>
+                <div class="crypto-wallets">
+                    <div class="crypto-wallet">
+                        <div class="wallet-name">Bitcoin (BTC)</div>
+                        <div class="wallet-address" onclick="copyToClipboard(this)">bc1qwxpyds0cw54yx5nsj54984p483rl0rwwrt6yu3</div>
+                        <div class="copy-notice">Amount: <span id="btc-amount">€7.00</span> | Click to copy address</div>
+                    </div>
+                    <div class="crypto-wallet">
+                        <div class="wallet-name">Ethereum (ETH)</div>
+                        <div class="wallet-address" onclick="copyToClipboard(this)">0x07210f98D86CbB3D230E18fD3110d614e7BFc1a4</div>
+                        <div class="copy-notice">Amount: <span id="eth-amount">€7.00</span> | Click to copy address</div>
+                    </div>
+                    <div class="crypto-wallet">
+                        <div class="wallet-name">Litecoin (LTC)</div>
+                        <div class="wallet-address" onclick="copyToClipboard(this)">LarjctNQb4f5ngaEQMyr855FFFMoqSbbj9</div>
+                        <div class="copy-notice">Amount: <span id="ltc-amount">€7.00</span> | Click to copy address</div>
+                    </div>
+                    <div class="crypto-wallet">
+                        <div class="wallet-name">Monero (XMR)</div>
+                        <div class="wallet-address" onclick="copyToClipboard(this)">47pgAroEYd93BB9pj8KdJYguFaxHKNn7SfWCpFkyckuCXE8gSiRNi2iB8SFJE1V7BVCTm48rtZ8erbRGK72r7nQRQBH7qrY</div>
+                        <div class="copy-notice">Amount: <span id="xmr-amount">€7.00</span> | Click to copy address</div>
+                    </div>
+                </div>
+            </div>
+                <div class="instruction-item">
+                <div class="instruction-label">2. Important:</div>
+                <div style="color: #A9A9A9; font-size: 13px; padding: 8px;">
+                    • Send the equivalent Euro amount shown above in your chosen cryptocurrency<br>
+                    • Keep your transaction hash (TXID) for verification<br>
+                    • Allow 1-6 confirmations depending on network<br>
+                    • Processing time: 30 minutes to 2 hours after confirmation
+                </div>
+            </div>
+            <button class="payment-complete-btn" onclick="showPaymentForm('crypto')">I'VE PAID</button>
+        </div>
+
+        <!-- Gift Card Instructions -->
+        <div id="giftcard-instructions" class="payment-instructions">
+            <h3 class="instructions-title">Gift Card Payment Instructions</h3>
+            <div class="instruction-item">
+                <div class="instruction-label">1. Purchase a gift card from one of these accepted retailers:</div>
+                <div style="color: #A9A9A9; font-size: 13px; padding: 8px;">
+                    • Amazon Gift Cards (EUR / Region: EUROPE|SPAIN)<br>
+                    • Steam Gift Cards (EUR / REGION: EUROPE|GLOBAL)<br>
+                </div>
+            </div>
+            <div class="instruction-item">
+                <div class="instruction-label">2. Gift card value needed:</div>
+                <div class="instruction-value" id="giftcard-amount">€7.00 EUR</div>
+            </div>
+            <div class="instruction-item">
+                <div class="instruction-label">3. Important:</div>
+                <div style="color: #A9A9A9; font-size: 13px; padding: 8px;">
+                    • Purchase the exact amount shown above<br>
+                    • Keep the gift card code and receipt<br>
+                    • Do not scratch off the code until submitting the form<br>
+                    • Processing time: 2-6 hours after verification
+                </div>
+            </div>
+            <button class="payment-complete-btn" onclick="showPaymentForm('giftcard')">I'VE PAID</button>
+        </div>
+
+        <!-- Payment Submission Form -->
+        <div id="payment-form" class="payment-form-container">
+            <h3 class="payment-form-title">Payment Confirmation Form</h3>
+            <form id="payment-submission-form">
+                <div class="form-section">
+                    <div class="section-title">Payment Details</div>
+                    <div class="form-group">
+                        <label for="payment-id">Payment ID / Transaction Hash / Gift Card Code:</label>
+                        <input type="text" id="payment-id" name="payment_id" required 
+                               placeholder="Enter your PayPal transaction ID, crypto TXID, or gift card code">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount-paid">Amount Paid:</label>
+                        <input type="text" id="amount-paid" name="amount_paid" required 
+                               placeholder="e.g., €7.00 EUR or 0.00012 BTC">
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method-used">Payment Method Used:</label>
+                        <select id="payment-method-used" name="payment_method" required>
+                            <option value="">Select payment method</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="bitcoin">Bitcoin (BTC)</option>
+                            <option value="ethereum">Ethereum (ETH)</option>
+                            <option value="litecoin">Litecoin (LTC)</option>
+                            <option value="monero">Monero (XMR)</option>
+                            <option value="amazon">Amazon Gift Card</option>
+                            <option value="steam">Steam Gift Card</option>
+                            <option value="google">Google Play Gift Card</option>
+                            <option value="apple">Apple iTunes Gift Card</option>
+                            <option value="xbox">Xbox Gift Card</option>
+                            <option value="playstation">PlayStation Store Card</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Contact Information</div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address:</label>
+                        <input type="email" id="contact-email" name="contact_email" required 
+                               placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-discord">Discord Username (optional):</label>
+                        <input type="text" id="contact-discord" name="contact_discord" 
+                               placeholder="username#1234">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-telegram">Telegram Username (optional):</label>
+                        <input type="text" id="contact-telegram" name="contact_telegram" 
+                               placeholder="@username">
+                    </div>
+                </div>
+
+                <div class="form-section gift-card-section" id="gift-card-details">
+                    <div class="section-title">Gift Card Details</div>
+                    <div class="form-group">
+                        <label for="gift-card-retailer">Gift Card Retailer:</label>
+                        <input type="text" id="gift-card-retailer" name="gift_card_retailer" 
+                               placeholder="e.g., Amazon, Steam, Google Play">
+                    </div>
+                    <div class="form-group">
+                        <label for="gift-card-receipt">Receipt/Proof of Purchase (optional):</label>
+                        <textarea id="gift-card-receipt" name="gift_card_receipt" rows="3" 
+                                  placeholder="Upload receipt image to an image hosting service and paste the link here, or describe your purchase"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Additional Information</div>
+                    <div class="form-group">
+                        <label for="plan-selected">Plan Selected:</label>
+                        <input type="text" id="plan-selected" name="plan_selected" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional-notes">Additional Notes (optional):</label>
+                        <textarea id="additional-notes" name="additional_notes" rows="3" 
+                                  placeholder="Any additional information or special requests"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" class="send-message-btn">SUBMIT PAYMENT</button>
+                </div>
+                
+                <div id="payment-form-status"></div>
+            </form>
+        </div>
+        
+        <p class="plan-disclaimer">By purchasing, you agree to our terms of service and acceptable use policy.</p>
+    </div>
+
+    <!-- Updates Modal -->
+    <div class="modal" id="updates-modal">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Recent Updates</h2>
+        <div class="modal-content">
+            <p class="modal-paragraph">
+                - Fixed HackCheck using an offline proxy (Now does the query straight to HackCheck)
+            </p>
+            <p class="modal-paragraph">
+                - Refreshed the website design for a cleaner, more modern look.
+            </p>
+            <p class="modal-paragraph">
+                - Changed Servers
+            </p>
+            <p class="modal-paragraph">
+                - Improved the overall API structure for better performance and usability.
+            </p>
+            <p class="modal-paragraph">
+                - Added SEON
+            </p>
+            <p class="modal-paragraph">
+                - Added Oathnet.RU
+            </p>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contact-modal">
+        <button class="modal-close">&times;</button>
+        <div class="contact-container">
+            <div class="contact-column">
+                <h2 class="contact-title">Get In Touch</h2>
+                
+                <div class="contact-item">
+                    <h3 class="contact-label">Discord</h3>
+                    <p class="contact-text">
+                        <a href="https://discord.gg/HRSz8C5Bcu" class="contact-link">discord.gg/HRSz8C5Bcu</a>
+                    </p><BR>
+                    <h3 class="contact-label">Telegram</h3>
+                    <p class="contact-text">
+                        <a href="https://t.me/osintdog" class="contact-link">t.me/osintdog</a>
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <h3 class="contact-label">nope's telegram</h3>
+                    <p class="contact-text">
+                        <a href="https://t.me/kyspoor" class="contact-link">t.me/kyspoor</a>
+                    </p>
+                    <br>
+                </div>
+
+                <div class="contact-item">
+                    <h3 class="contact-label">email</h3>
+                    <p class="contact-text">
+                        <a href="/cdn-cgi/l/email-protection#a4c7cbcad0c5c7d0e4cbd7cdcad0c0cbc38ac7cbc9" class="contact-link"><span class="__cf_email__" data-cfemail="9dfef2f3e9fcfee9ddf2eef4f3e9f9f2fab3fef2f0">[email&#160;protected]</span></a>
+                    </p>
+                </div>
+
+                <div class="gdpr-notice">
+                    <h3>Data Processing Information</h3>
+                    <p>The information you submit through this form is sent through a Discord webhook and is not stored on our servers. We only process your data to respond to your inquiry.</p>
+                </div>  
+                
+            </div>
+            
+            <div class="contact-column">
+                <h2 class="contact-title">Send a Message</h2>
+                
+                
+                <form id="contact-form" action="discord-webhook.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Security">Security</option>
+                            <option value="Legal">Legal</option>
+                            <option value="API Access">API Access</option>
+                            <option value="Data Removal Request">Data Removal Request</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="send-message-btn">SEND MESSAGE</button>
+                    </div>
+                    
+                    <div id="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Removal Modal -->
+    <div class="modal" id="removal-modal">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Data Removal Requests</h2>
+        <div class="modal-content">
+            <p class="modal-paragraph">
+                Under GDPR and other privacy regulations, you have the right to request removal of your personal data from our database.
+            </p>
+            <p class="modal-paragraph">
+                <strong>All data removal requests are processed completely free of charge.</strong> We do not charge any fees for handling removal requests as this is your fundamental right.
+            </p>
+            <p class="modal-paragraph">
+                To submit a removal request, please click the button below to open our contact form. Select "Data Removal Request" as the subject and provide the specific information you want removed.
+            </p>
+            <p class="modal-paragraph">
+                We will process your request as quickly as possible and notify you once completed.
+            </p>
+            <button class="modal-button" id="request-removal-btn">REQUEST DATA REMOVAL</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner" style="width: 50px; height: 50px; border: 5px solid #333; border-radius: 50%; border-top-color: #A9A9A9; animation: spin 1s linear infinite;"></div>
+        <div class="loading-text">Searching databases, please wait...</div>
+    </div>
+
+    <!-- Hidden form for submitting to response.php -->
+    <form id="response-form" action="response.php" method="POST" style="display: none;">
+        <input type="hidden" name="response_data" id="response-data">
+        <input type="hidden" name="search_type" id="search-type">
+        <input type="hidden" name="search_query" id="search-query">
+    </form>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Global variables
+        let selectedPlan = '';
+        let selectedPaymentMethod = '';
+
+        // Modal functionality
+        const overlay = document.getElementById('overlay');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.modal-close');
+
+        // Function to open a specific modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            overlay.style.display = 'block';
+            modal.style.display = 'block';
+        }
+
+        // Function to close all modals
+        function closeAllModals() {
+            overlay.style.display = 'none';
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+            // Reset payment flow
+            resetPaymentFlow();
+        }
+
+        // Function to reset payment flow
+        function resetPaymentFlow() {
+            document.getElementById('payment-selection').style.display = 'none';
+            document.querySelectorAll('.payment-instructions').forEach(el => el.style.display = 'none');
+            document.getElementById('payment-form').style.display = 'none';
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            selectedPlan = '';
+            selectedPaymentMethod = '';
+        }
+
+        // Function to show payment options
+        function showPaymentOptions(plan) {
+            selectedPlan = plan;
+            document.getElementById('payment-selection').style.display = 'block';
+            
+            // Update amounts based on plan
+            if (plan === 'monthly') {
+                document.getElementById('paypal-amount').textContent = '€7.00 EUR';
+                document.getElementById('paypal-note').textContent = 'API Access - Monthly Plan';
+                document.getElementById('btc-amount').textContent = '€7.00';
+                document.getElementById('eth-amount').textContent = '€7.00';
+                document.getElementById('ltc-amount').textContent = '€7.00';
+                document.getElementById('xmr-amount').textContent = '€7.00';
+                document.getElementById('giftcard-amount').textContent = '€7.00 EUR';
+                document.getElementById('plan-selected').value = 'Monthly Plan - €7.00';
+            } else {
+                document.getElementById('paypal-amount').textContent = '€50.00 EUR';
+                document.getElementById('paypal-note').textContent = 'API Access - Lifetime Plan';
+                document.getElementById('btc-amount').textContent = '€50.00';
+                document.getElementById('eth-amount').textContent = '€50.00';
+                document.getElementById('ltc-amount').textContent = '€50.00';
+                document.getElementById('xmr-amount').textContent = '€50.00';
+                document.getElementById('giftcard-amount').textContent = '€50.00 EUR';
+                document.getElementById('plan-selected').value = 'Lifetime Plan - €50.00';
+            }
+        }
+
+        // Function to select payment method
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            
+            // Remove selected class from all payment methods
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            
+            // Add selected class to clicked payment method
+            event.target.closest('.payment-method').classList.add('selected');
+            
+            // Hide all instructions
+            document.querySelectorAll('.payment-instructions').forEach(el => el.style.display = 'none');
+            
+            // Show relevant instructions
+            if (method === 'paypal') {
+                document.getElementById('paypal-instructions').style.display = 'block';
+            } else if (method === 'crypto') {
+                document.getElementById('crypto-instructions').style.display = 'block';
+            } else if (method === 'giftcard') {
+                document.getElementById('giftcard-instructions').style.display = 'block';
+            }
+        }
+
+        // Function to show payment form
+        function showPaymentForm(paymentType) {
+            document.getElementById('payment-form').style.display = 'block';
+            
+            // Show/hide gift card section based on payment type
+            const giftCardSection = document.getElementById('gift-card-details');
+            if (paymentType === 'giftcard') {
+                giftCardSection.style.display = 'block';
+                document.getElementById('gift-card-retailer').required = true;
+            } else {
+                giftCardSection.style.display = 'none';
+                document.getElementById('gift-card-retailer').required = false;
+            }
+
+            // Set the payment method in the form
+            const paymentMethodSelect = document.getElementById('payment-method-used');
+            if (paymentType === 'paypal') {
+                paymentMethodSelect.value = 'paypal';
+            } else if (paymentType === 'crypto') {
+                // Don't pre-select, let user choose specific crypto
+            } else if (paymentType === 'giftcard') {
+                // Don't pre-select, let user choose specific gift card type
+            }
+
+            // Scroll to form
+            document.getElementById('payment-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Function to copy text to clipboard
+        function copyToClipboard(element) {
+            const text = element.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                // Show feedback
+                const originalText = element.textContent;
+                element.textContent = 'Copied!';
+                element.style.backgroundColor = '#333';
+                setTimeout(() => {
+                    element.textContent = originalText;
+                    element.style.backgroundColor = '#000';
+                }, 1000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const originalText = element.textContent;
+                element.textContent = 'Copied!';
+                element.style.backgroundColor = '#333';
+                setTimeout(() => {
+                    element.textContent = originalText;
+                    element.style.backgroundColor = '#000';
+                }, 1000);
+            });
+        }
+
+        // Event listeners for buttons
+        document.getElementById('info-button').addEventListener('click', () => openModal('info-modal'));
+        document.getElementById('purchase-button').addEventListener('click', () => openModal('purchase-modal'));
+
+        // Update the search button event listener to use the new response page
+        document.getElementById('search-button').addEventListener('click', function() {
+            const searchType = document.querySelector('.query-select').value;
+            const searchQuery = document.querySelector('.search-input input').value.trim();
+            
+            // Validate input
+            if (!searchType) {
+                alert('Please select a search type');
+                return;
+            }
+            
+            if (!searchQuery) {
+                alert('Please enter a search query');
+                return;
+            }
+            
+            // Show loading overlay
+            document.getElementById('loading-overlay').style.display = 'flex';
+            
+            // Prepare the request
+            const requestData = {
+                field: [{ [searchType]: searchQuery }]
+            };
+            
+            // Send the request to our API proxy
+            fetch('api_proxy.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-Key': 'demo_key'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => {
+                // First get the raw text response
+                return response.text().then(text => {
+                    // If the response is empty
+                    if (!text || text.trim() === '') {
+                        throw new Error('Server returned an empty response. Check server logs for PHP errors.');
+                    }
+                    
+                    try {
+                        // Try to parse as JSON
+                        const data = JSON.parse(text);
+                        return { text: text, data: data, status: response.status };
+                    } catch (e) {
+                        // If JSON parsing fails, return the raw text
+                        return { text: text, data: null, status: response.status };
+                    }
+                });
+            })
+            .then(result => {
+                // Hide loading overlay
+                document.getElementById('loading-overlay').style.display = 'none';
+                
+                // Set form values
+                document.getElementById('response-data').value = result.text;
+                document.getElementById('search-type').value = searchType;
+                document.getElementById('search-query').value = searchQuery;
+                
+                // Submit the form to open the response page
+                document.getElementById('response-form').submit();
+            })
+            .catch(error => {
+                // Hide loading overlay
+                document.getElementById('loading-overlay').style.display = 'none';
+                
+                // Set error message in form
+                document.getElementById('response-data').value = JSON.stringify({ error: error.message });
+                document.getElementById('search-type').value = searchType;
+                document.getElementById('search-query').value = searchQuery;
+                
+                // Submit the form to open the response page with error
+                document.getElementById('response-form').submit();
+            });
+        });
+
+        // Footer links
+        document.getElementById('updates-link').addEventListener('click', () => openModal('updates-modal'));
+        document.getElementById('contact-link').addEventListener('click', () => openModal('contact-modal'));
+        document.getElementById('removal-link').addEventListener('click', () => openModal('removal-modal'));
+
+        // Data removal request button
+        document.getElementById('request-removal-btn').addEventListener('click', function() {
+            closeAllModals();
+            openModal('contact-modal');
+            // Pre-select "Data Removal Request" in the subject dropdown
+            document.getElementById('subject').value = 'Data Removal Request';
+        });
+
+        // Close buttons
+        closeButtons.forEach(button => {
+            button.addEventListener('click', closeAllModals);
+        });
+
+        // Close by clicking overlay
+        overlay.addEventListener('click', closeAllModals);
+
+        // Payment form submission
+        document.getElementById('payment-submission-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formStatus = document.getElementById('payment-form-status');
+            formStatus.className = '';
+            formStatus.style.display = 'none';
+            
+            const formData = new FormData(this);
+            
+            // Add selected plan and payment method to form data
+            formData.append('selected_plan', selectedPlan);
+            formData.append('selected_payment_method', selectedPaymentMethod);
+            
+            try {
+                const response = await fetch('payment-webhook.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    formStatus.textContent = 'Your payment submission has been received! We will verify your payment and activate your API access within 2-6 hours. You will receive a confirmation email once processed.';
+                    formStatus.className = 'api-success';
+                    document.getElementById('payment-submission-form').reset();
+                    
+                    // Reset the payment flow after successful submission
+                    setTimeout(() => {
+                        resetPaymentFlow();
+                    }, 3000);
+                } else {
+                    formStatus.textContent = result.message || 'There was an error submitting your payment information. Please try again or contact support.';
+                    formStatus.className = 'api-error';
+                }
+            } catch (error) {
+                formStatus.textContent = 'There was an error submitting your payment information. Please try again or contact support.';
+                formStatus.className = 'api-error';
+            }
+            
+            formStatus.style.display = 'block';
+        });
+    </script>
+
+    <script>
+        // Contact form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formStatus = document.getElementById('form-status');
+                    formStatus.className = '';
+                    formStatus.style.display = 'none';
+                    
+                    const formData = new FormData(this);
+                    
+                    try {
+                        const response = await fetch('discord-webhook.php', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            formStatus.textContent = 'Your message has been sent successfully!';
+                            formStatus.className = 'success';
+                            contactForm.reset();
+                        } else {
+                            formStatus.textContent = result.message || 'There was an error sending your message. Please try again.';
+                            formStatus.className = 'error';
+                        }
+                    } catch (error) {
+                        formStatus.textContent = 'There was an error sending your message. Please try again.';
+                        formStatus.className = 'error';
+                    }
+                    
+                    formStatus.style.display = 'block';
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // Activation form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const activationForm = document.getElementById('activation-form');
+            if (activationForm) {
+                activationForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const activationStatus = document.getElementById('activation-status');
+                    activationStatus.className = '';
+                    activationStatus.style.display = 'none';
+                    
+                    const formData = new FormData(this);
+                    
+                    try {
+                        const response = await fetch('activation.php', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            activationStatus.textContent = 'Your activation key has been submitted successfully!';
+                            activationStatus.className = 'success';
+                            activationStatus.style.display = 'block';
+                            activationForm.reset();
+                        } else {
+                            activationStatus.textContent = result.message || 'There was an error processing your activation key. Please try again.';
+                            activationStatus.className = 'error';
+                            activationStatus.style.display = 'block';
+                        }
+                    } catch (error) {
+                        activationStatus.textContent = 'There was an error processing your activation key. Please try again.';
+                        activationStatus.className = 'error';
+                        activationStatus.style.display = 'block';
+                    }
+                });
+            }
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"94f4f4447876037b","version":"2025.6.2","r":1,"token":"a587d2e9406d4d39a94743af75cb629f","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</body>
+</html> 
